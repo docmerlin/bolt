@@ -1608,7 +1608,6 @@ func TestBucket_Put_Single(t *testing.T) {
 		}); err != nil {
 			t.Fatal(err)
 		}
-
 		for _, item := range items {
 			if err := db.Update(func(tx *bolt.Tx) error {
 				if err := tx.Bucket([]byte("widgets")).Put(item.Key, item.Value); err != nil {

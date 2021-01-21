@@ -1,4 +1,4 @@
-package main_test
+package mainhelper_test
 
 import (
 	"bytes"
@@ -13,7 +13,7 @@ import (
 	"testing"
 
 	"github.com/boltdb/bolt"
-	"github.com/boltdb/bolt/cmd/bolt"
+	"github.com/boltdb/bolt/cmd/bolt/mainhelper"
 )
 
 // Ensure the "info" command can print information about a database.
@@ -148,7 +148,7 @@ func TestStatsCommand_Run(t *testing.T) {
 
 // Main represents a test wrapper for main.Main that records output.
 type Main struct {
-	*main.Main
+	*mainhelper.Main
 	Stdin  bytes.Buffer
 	Stdout bytes.Buffer
 	Stderr bytes.Buffer
@@ -156,7 +156,7 @@ type Main struct {
 
 // NewMain returns a new instance of Main.
 func NewMain() *Main {
-	m := &Main{Main: main.NewMain()}
+	m := &Main{Main: mainhelper.NewMain()}
 	m.Main.Stdin = &m.Stdin
 	m.Main.Stdout = &m.Stdout
 	m.Main.Stderr = &m.Stderr
